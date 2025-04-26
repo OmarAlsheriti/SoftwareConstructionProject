@@ -1,0 +1,32 @@
+class MyStack {
+    Queue<Integer> q1;
+
+    public MyStack() {
+        q1 = new LinkedList<>();
+    }
+
+    // Push element x onto the stack
+    public void push(int x) {
+        q1.add(x);  // O(1)
+        int size = q1.size() - 1;
+        while (size-- > 0) {
+            q1.add(q1.poll());  // Rotate elements to ensure the last added element is at the front
+        }
+    }
+
+    // Removes the element on the top of the stack and returns it
+    public int pop() {
+        return q1.poll();  // O(1)
+    }
+
+    // Get the top element without removing it
+    public int top() {
+        return q1.peek();  // O(1)
+    }
+
+    // Returns true if the stack is empty
+    public boolean empty() {
+        return q1.size() == 0;  // O(1)
+    }
+}
+
